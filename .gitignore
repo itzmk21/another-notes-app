@@ -13,3 +13,5 @@ build/
 # OS files
 Thumbs.db
 .DS_Store
+
+*.jks
