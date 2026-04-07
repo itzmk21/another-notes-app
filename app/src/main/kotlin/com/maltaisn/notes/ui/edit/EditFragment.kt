@@ -154,6 +154,12 @@ class EditFragment : Fragment(), Toolbar.OnMenuItemClickListener, ConfirmDialog.
             })
         }
 
+        binding.btnSave.setOnClickListener {
+            view.hideKeyboard()
+            viewModel.saveNote()
+            viewModel.exit()
+        }
+
         // Recycler view
         val rcv = binding.recyclerView
         rcv.setHasFixedSize(true)
@@ -201,6 +207,13 @@ class EditFragment : Fragment(), Toolbar.OnMenuItemClickListener, ConfirmDialog.
         ViewCompat.setOnApplyWindowInsetsListener(rcv) { _, insets ->
             val sysWindow = insets.getInsets(WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.ime())
             rcv.updatePadding(bottom = sysWindow.bottom + initialPadding)
+            insets
+        }
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.btnSave) { v, insets ->
+            val imeInsets = insets.getInsets(WindowInsetsCompat.Type.ime())
+            val navInsets = insets.getInsets(WindowInsetsCompat.Type.navigationBars())
+            v.translationY = -maxOf(imeInsets.bottom, navInsets.bottom).toFloat()
             insets
         }
 

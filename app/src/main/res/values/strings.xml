@@ -147,6 +147,8 @@
         <item quantity="other">%d checked items</item>
     </plurals>
 
+    <string name="action_save">Save</string>
+
     <!-- Reminder -->
     <string name="note_reminders">Reminders</string>
     <string name="reminder_upcoming">Upcoming</string>
